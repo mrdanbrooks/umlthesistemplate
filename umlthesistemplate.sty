@@ -175,7 +175,7 @@
   \ifdefined\includemakeapprovalpage
   \approvalpage
   \fi}
-\def\approvalpage{  \countands{\@members}  \membercount\andcount  \advance\membercount by 1  \totalmembers\majorcount  \advance\totalmembers by \membercount  \newpage  \thispagestyle{empty}  \begin{centering}    \@title\\
+\def\approvalpage{  \countands{\@members}  \membercount\andcount  \advance\membercount by 1  \totalmembers\majorcount  \advance\totalmembers by \membercount  \newpage  \thispagestyle{empty}  \begin{centering}    {\large\@title\\}
     \vspace*{2\baselineskip}
     BY \\
     \vspace*{2\baselineskip}    \MakeUppercase{\@author} \\
