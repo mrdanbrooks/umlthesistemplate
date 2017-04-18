@@ -32,6 +32,7 @@
 %\department{Computer Science}
 %\university{University of Massachusetts Lowell}
 %\majorprofessor{Dr. Holly A. Yanco}
+%\majorproftitle{Dissertation Chair}
 %\members{Dr. Jill Drury \and Dr. Aaron Steinfeld}
 % % You can specify what front matter you want generated
 %\abstract{ \input{abstract.tex} }
@@ -166,7 +167,8 @@
 \def\@pastdegrees{\missingalert{No past degrees given}}
 \def\degree#1{\def\@degree{#1}}\def\@degree{\missingalert{No degree given}}\def\department#1{\def\@department{#1}}\def\@department{\missingalert{No department given}}
 \def\university#1{\def\@university{#1}}\def\@university{\missingalert{No university given}}
-\def\majorprofessor#1{\def\@majorprofessor{#1}}\def\@majorprofessor{\missingalert{No \noexpand\majorprofessor given}}\def\members#1{\def\@members{#1}}\def\@members{\missingalert{No \noexpand\members given}}
+\def\majorprofessor#1{\def\@majorprofessor{#1}}\def\@majorprofessor{\missingalert{No \noexpand\majorprofessor given}}
+\def\majorproftitle#1{\def\@majorproftitle{#1}}\def\@majorproftitle{\missingalert{No \noexpand\majorproftitle given}}\def\members#1{\def\@members{#1}}\def\@members{\missingalert{No \noexpand\members given}}
 
 
 \def\makeapprovalpage{%
@@ -182,7 +184,7 @@
     \par    \vspace*{2\baselineskip}    SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS\\    FOR THE DEGREE OF \MakeUppercase{\@degree} \\    \MakeUppercase{\@department} \\    \MakeUppercase{\@university}  \\
   \end{centering}  \vspace*{4\baselineskip}    
   \begin{flushleft} Author:\quad\dotfill \quad Date: \@date \\ \end{flushleft}  \vspace*{0.12in}
-  \begin{flushleft} Thesis Supervisor:\quad\dotfill \end{flushleft}%\hrulefill  \vspace*{-0.25in}
+  \begin{flushleft} \@majorproftitle:\quad\dotfill \end{flushleft}%\hrulefill  \vspace*{-0.25in}
   \begin{flushright}\@majorprofessor\end{flushright}
   \begin{list}{}{\leftmargin 0in \rightmargin 0in}\item[] %https://tex.stackexchange.com/q/332063   \def\and{\begin{flushleft}\vspace*{0.04in}Committee Member: \quad\dotfill \end{flushleft}\flushright\vspace*{-0.2in}}    \and\@members    \end{list}}
 
