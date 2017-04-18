@@ -154,39 +154,85 @@
 % (adapted from the adaptations to something that probably originated in usfmanus.cls)
 \newcommand{\includeapproval}{\newcommand{\includemakeapprovalpage}{ }}
 
-\newcount\andcount\newcount\totalmembers\newcount\majorcount\newcount\membercount
+\newcount\andcount
+\newcount\totalmembers
+\newcount\majorcount
+\newcount\membercount
 \newcount\degreecount
 
 \def\countands#1{\andcount=0 \expandafter\countand #1\end}
 
-\def\countand#1{%  \ifx#1\end%    \let\next=\relax%  \else%    \let\next=\countand%    \ifx#1\and%      \advance\andcount by 1%    \fi%  \fi%  \next}
+\def\countand#1{%
+  \ifx#1\end%
+    \let\next=\relax%
+  \else%
+    \let\next=\countand%
+    \ifx#1\and%
+      \advance\andcount by 1%
+    \fi%
+  \fi%
+  \next}
 
-\def\title#1{\def\@title{\uppercase{#1}}} % Makes the title upper case\def\@title{\missingalert{No \title given}}\def\author#1{\def\@author{#1}}\def\@author{\missingalert{No \author given}}
+
+\def\title#1{\def\@title{\uppercase{#1}}} % Makes the title upper case
+\def\@title{\missingalert{No \title given}}
+\def\author#1{\def\@author{#1}}
+\def\@author{\missingalert{No \author given}}
 
 \def\pastdegrees#1{\def\@pastdegrees{#1}}
 \def\@pastdegrees{\missingalert{No past degrees given}}
-\def\degree#1{\def\@degree{#1}}\def\@degree{\missingalert{No degree given}}\def\department#1{\def\@department{#1}}\def\@department{\missingalert{No department given}}
-\def\university#1{\def\@university{#1}}\def\@university{\missingalert{No university given}}
-\def\majorprofessor#1{\def\@majorprofessor{#1}}\def\@majorprofessor{\missingalert{No \noexpand\majorprofessor given}}
-\def\majorproftitle#1{\def\@majorproftitle{#1}}\def\@majorproftitle{\missingalert{No \noexpand\majorproftitle given}}\def\members#1{\def\@members{#1}}\def\@members{\missingalert{No \noexpand\members given}}
+\def\degree#1{\def\@degree{#1}}
+\def\@degree{\missingalert{No degree given}}
+\def\department#1{\def\@department{#1}}
+\def\@department{\missingalert{No department given}}
+\def\university#1{\def\@university{#1}}
+\def\@university{\missingalert{No university given}}
+\def\majorprofessor#1{\def\@majorprofessor{#1}}
+\def\@majorprofessor{\missingalert{No \noexpand\majorprofessor given}}
+\def\majorproftitle#1{\def\@majorproftitle{#1}}
+\def\@majorproftitle{\missingalert{No \noexpand\majorproftitle given}}
+\def\members#1{\def\@members{#1}}
+\def\@members{\missingalert{No \noexpand\members given}}
 
 
 \def\makeapprovalpage{%
   \ifdefined\includemakeapprovalpage
   \approvalpage
   \fi}
-\def\approvalpage{  \countands{\@members}  \membercount\andcount  \advance\membercount by 1  \totalmembers\majorcount  \advance\totalmembers by \membercount  \newpage  \thispagestyle{empty}  \begin{centering}    {\large\@title\\}
+\def\approvalpage{
+  \countands{\@members}
+  \membercount\andcount
+  \advance\membercount by 1
+  \totalmembers\majorcount
+  \advance\totalmembers by \membercount
+  \newpage
+  \thispagestyle{empty}
+  \begin{centering}
+    {\large\@title\\}
     \vspace*{2\baselineskip}
     BY \\
-    \vspace*{2\baselineskip}    \MakeUppercase{\@author} \\
+    \vspace*{2\baselineskip}
+    \MakeUppercase{\@author} \\
     \def\and{\par\MakeUppercase}
     \and\@pastdegrees
-    \par    \vspace*{2\baselineskip}    SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS\\    FOR THE DEGREE OF \MakeUppercase{\@degree} \\    \MakeUppercase{\@department} \\    \MakeUppercase{\@university}  \\
-  \end{centering}  \vspace*{4\baselineskip}    
-  \begin{flushleft} Author:\quad\dotfill \quad Date: \@date \\ \end{flushleft}  \vspace*{0.12in}
-  \begin{flushleft} \@majorproftitle:\quad\dotfill \end{flushleft}%\hrulefill  \vspace*{-0.25in}
+    \par
+    \vspace*{2\baselineskip}
+    SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS\\
+    FOR THE DEGREE OF \MakeUppercase{\@degree} \\
+    \MakeUppercase{\@department} \\
+    \MakeUppercase{\@university}  \\
+  \end{centering}
+  \vspace*{4\baselineskip}    
+  \begin{flushleft} Author:\quad\dotfill \quad Date: \@date \\ \end{flushleft}
+  \vspace*{0.12in}
+  \begin{flushleft} \@majorproftitle:\quad\dotfill \end{flushleft}%\hrulefill
+  \vspace*{-0.25in}
   \begin{flushright}\@majorprofessor\end{flushright}
-  \begin{list}{}{\leftmargin 0in \rightmargin 0in}\item[] %https://tex.stackexchange.com/q/332063   \def\and{\begin{flushleft}\vspace*{0.04in}Committee Member: \quad\dotfill \end{flushleft}\flushright\vspace*{-0.2in}}    \and\@members    \end{list}}
+  \begin{list}{}{\leftmargin 0in \rightmargin 0in}\item[] %https://tex.stackexchange.com/q/332063
+   \def\and{\begin{flushleft}\vspace*{0.04in}Committee Member: \quad\dotfill \end{flushleft}\flushright\vspace*{-0.2in}}
+    \and\@members
+    \end{list}
+}
 
 
 
